@@ -11,7 +11,8 @@ David Teller posted a Binary AST newsletter introducing the broad proposal.
 While the final byte-level format has yet to be fully nailed down, we have
 arrived at a prototype design, and a set of design requirements for a final
 format that we are confident will deliver the performance benefits promised by
-the prototype.  The prototype shows potential performance gains of 80% in
+the prototype. While it is too early to promise specific speedups, the
+prototype suggests that we could reach performance gains of 80% in
 parsing code as compared to minified JS.
 
 For the next stage of the standards process, we are working towards a
@@ -91,7 +92,7 @@ load times are a fraction of Java application load times.
 The per-byte work of loading source is much lower for JS than for Java.
 
 Even with this lighter burden of verification, the fact that every byte
-of source has to be scanned is a high burden, and JS engines mitigate\
+of source has to be scanned is a high burden, and JS engines mitigate
 it using the syntax-parsing technique I described earlier.
 
 ### Dart
@@ -100,7 +101,8 @@ Google's Dart language deserves a bit of special mention here.  It observed
 the hit to load-times incurred by heavy load-time verification requirements,
 and decided to make all syntax errors lazy.
 
-The lazification of syntax errors allowed Dart to greatly reduce the cost
+The lazification of syntax errors does not affect the behavior of
+correct programs but allows Dart to greatly reduce the cost
 of load-time parsing.  Code only needs to be scanned for a handful
 of tokens such as brackets (for checking for consistent nesting) and strings
 and comments (because the parser needs to ignore brackets within strings and
